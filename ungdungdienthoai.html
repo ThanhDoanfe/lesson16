@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dien thoai</title>
+</head>
+<body>
+    <script>
+      class mobile {
+        battery;
+        memorySaveMs;
+        memoryAreaComes;
+        memoryAreaSent;
+        status;
+
+        //battery
+        battery(battery) {
+          this.battery = battery;
+        }
+
+        getBattery() {
+          return this.battery;
+        }
+
+        setBattery(battery) {
+          this.battery = battery;
+        }
+
+        //Memory
+        Memory(memorySaveMs, memoryAreaComes, memoryAreaSent) {
+          this.memorySaveMs = memorySaveMs;
+          this.memoryAreaComes = memoryAreaComes;
+          this.memoryAreaSent = memoryAreaSent;
+        }
+          composeMessage(message){
+            if (this.IsOn()){
+            this.battery--;
+            this.memorySaveMs=message;}
+
+          }
+          SendMessage(toMobile){
+            if(this.IsOn()){
+                this.battery--;
+                this.memoryAreaSent=this.memorySaveMs;
+                toMobile.memoryAreaComes=this.memoryAreaComes;
+            }}
+            rcMessage(){
+                if (this.IsOn()){
+                    this.battery--;
+                    return "may co 1 tin nhan"
+                }}
+            readMs(){
+            if (this.IsOn()){
+                this.battery--
+                return this.memoryAreaComes;
+            }
+            }
+          //status
+          Status(status){
+            this.status=status;
+          }
+          IsOn(){
+            return this.status ? true :false
+          }
+          TurnOn(){
+            if(!this.IsOn()){
+                if (this.getBattery()>0 && this.getBattery()<=100){
+                    this.battery--;
+                    this.status=true;
+                }
+            }
+
+          }
+          chargeBattery(){
+            if(this.battery<100){
+                this.battery++;
+            }
+          }}
+
+          function main(){
+          let nokia =new mobile(90,"",'','',true);
+          let iphone=new mobile(80,"",'','',true);
+          let composeMessage=prompt();
+          nokia.composeMessage(composeMessage);
+          nokia.SendMessage(iphone);
+          let check=iphone.rcMessage();
+          if(check!=""){
+              alert("Message is " + iphone.readMs())
+          }
+}
+    </script>
+</body>
+</html>

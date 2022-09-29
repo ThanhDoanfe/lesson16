@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<SCRIPT>
+  let temperature=function (c){
+    this.c=c;
+    this.f=function (){
+      return 9/5*this.c+32;
+    }
+    this.k=function (){
+    return this.c +273.15
+    }
+  }
+  let temper= new temperature(prompt("nhap nhiet do ban muon tinh:"));
+  let my_f=temper.f();
+  let my_k=temper.k();
+  alert("nhiet do k: " + my_k + " " + "nhiet do f là :" +my_f)
+
+</SCRIPT>
+
+</body>
+</html>
